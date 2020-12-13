@@ -11,12 +11,16 @@ Dim name, pass, addBtn
 Function insertUser()
 If addBtn <> "" Then ' new logic here to ensure that the button has actually been pressed before carrying out the ADO operations.  
     strSql = "INSERT INTO dbo.userLogins (userName, passW) VALUES (" & "'" & name & "', " & "'" & pass & "'" & ")"
-    
-    Set objConn = Server.CreateObject("ADODB.Connection")
-      objConn.Open(connstr)
-      objConn.Execute strSql, , adCmdText
-      objConn.Close 
-    Set objConn = Nothing
+      If name <> "" AND pass <> "" Then 
+        Set objConn = Server.CreateObject("ADODB.Connection")
+          objConn.Open(connstr)
+          objConn.Execute strSql, , adCmdText
+          objConn.Close 
+        Set objConn = Nothing
+    Else 
+      strError = "alert(Something went wrong!)"
+      response.write(strError)
+    End If
   End If ' end of new logic encapsulation.  
 End Function
 
@@ -33,6 +37,16 @@ End If
 End Function
 %>
 
+<script type="javascript">
+function errorMessage() {
+  alert("Something went wrong"); 
+}
+
+function validate(element) {
+  return false; 
+}
+</script>
+
 
 <!DOCTYPE html>
 <html>
@@ -44,10 +58,10 @@ End Function
 <table>
   <tr><th>User Controls</th></tr>
   <tr>
-    <td><input name="username"></td>
-    <td><input name="password"></td>
-    <td><input name = "addBtn" type = "Submit" value = "Add User" onsubmit="<%=insertUser%>"></td>
-    <td><input name ="removeBtn" type="Submit" value = "Remove User" onsubmit="<%=deleteUser%>"></td>
+    <td>UserName: <input name="username"></td>
+    <td>Password: <input name="password"></td>
+    <td><input name = "addBtn" type = "Submit" value = "Add User" onsubmit="<%=insertUser%>" onclick="return validate(this)"></td>
+    <td><input style="background:red;" name ="removeBtn" type="Submit" value = "Remove User" onsubmit="<%=deleteUser%>"></td>
   </tr>
 </form>
 </body>
