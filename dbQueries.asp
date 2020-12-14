@@ -7,6 +7,7 @@ Dim name, pass, addBtn
   pass = Request.Form("password")
   addBtn = Request.Form("addBtn") ' gave the submit button a name attribute and grabbed it on server code.  
   removeBtn = Request.Form("removeBtn")
+  lookupBtn = Request.Form("lookupBtn")
 
 Function insertUser()
 If addBtn <> "" Then ' new logic here to ensure that the button has actually been pressed before carrying out the ADO operations.  
@@ -30,22 +31,27 @@ If removeBtn <> "" Then
 
   Set objConn = Server.CreateObject("ADODB.Connection")
     objConn.Open(connstr)
-    objConn.Execute strsql, , adCmdText
+    objConn.Execute strSql, , adCmdText
     objConn.Close
     Set objConn = Nothing
 End If 
 End Function
+
+Function lookUpUser()
+strSql = "Select * FROM dbo.userLogins"
+  Set objConn = Server.CreateObject("ADODB.Connection")
+  objConn.Open(connStr)
+
+  Set rs = Server.CreateObject("ADODB.Recordset")
+  rs.Open strSql, objConn
+
+  for each x in rs.fields
+    response.write(x.name)
+  next
+End Function 
 %>
 
-<script type="javascript">
-function errorMessage() {
-  alert("Something went wrong"); 
-}
 
-function validate(element) {
-  return false; 
-}
-</script>
 
 
 <!DOCTYPE html>
@@ -60,10 +66,17 @@ function validate(element) {
   <tr>
     <td>UserName: <input name="username"></td>
     <td>Password: <input name="password"></td>
-    <td><input name = "addBtn" type = "Submit" value = "Add User" onsubmit="<%=insertUser%>" onclick="return validate(this)"></td>
-    <td><input style="background:red;" name ="removeBtn" type="Submit" value = "Remove User" onsubmit="<%=deleteUser%>"></td>
+    <td><input name="addBtn" type="Submit" value="Add User" onsubmit="<%=insertUser%>"></td>
+    <td><input style="background:red;" name="removeBtn" type="Submit" value="Remove User" onsubmit="<%=deleteUser%>"></td>
+    <td><input name="lookupBtn" type="Submit" value="Lookup User" onSubmit="<%=lookUpUser%>">
   </tr>
 </form>
+
+<script type="text/javascript">
+function preventDef(ele) {
+  event.preventDefault(); 
+}
+</script>
 </body>
 </html>
 
