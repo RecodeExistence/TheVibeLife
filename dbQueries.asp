@@ -23,6 +23,7 @@ ElseIf Request.QueryString("cmdID").Count > 0 Then
 Else 
   iCommandID = 0
 End If 
+response.write(iCommandID)
 
 SELECT Case iCommandID
     Case 0
@@ -32,6 +33,7 @@ SELECT Case iCommandID
     Case 1
     ' Insert data
     addUser
+    loadData
     Case 2
     ' Update data
     editUser
@@ -61,6 +63,8 @@ If addBtn <> "" Then ' new logic here to ensure that the button has actually bee
           objConn.Execute strSql, , adCmdText
           objConn.Close 
         Set objConn = Nothing
+        iCommandID=0
+        loadData
     Else 
       strError = "alert(Something went wrong!)"
       insertUser = response.write(strError)
@@ -84,6 +88,8 @@ If removeBtn <> "" Then
     objConn.Execute strSql, , adCmdText
     objConn.Close
     Set objConn = Nothing
+    iCommandID=0
+    loadData
 End If 
 End Sub
 
@@ -104,13 +110,13 @@ If lookupBtn <> "" Then
         Response.Redirect("./LoggedIn.asp")
       End If 
     objRs.Close
-  Set objRs = Nothing 
+  Set objRs = Nothing
 End If 
 End Sub
 %>
 <script type="text/javascript">
 function setCmd(inputField, submittedForm) {
-  Switch(inputField.name) {
+  switch(inputField.name) {
     case "addBtn":
       submittedForm.cmdID.value=1
       break; 
@@ -122,6 +128,7 @@ function setCmd(inputField, submittedForm) {
       break; 
     case "lookupBtn": 
       submittedForm.cmdID.value=6;
+      break;
 
     default: 
       submittedForm.cmdID.value=0
@@ -164,11 +171,11 @@ function setCmd(inputField, submittedForm) {
   <tr>
     <td>UserName: <input name="username"></td>
     <td>Password: <input name="password"></td>
-    <td><input name="addBtn" type="submit" value="Add User" onsubmit="setCmd(this, this.form)"></td>
-    <td><input style="background:red;" name="removeBtn" type="Submit" value="Remove User" onsubmit="this.preventDefault();alert(this)"></td>
-    <td><input name="lookupBtn" type="Submit" value="Lookup User">
+    <td><input name="addBtn" type="submit" value="Add User" onclick="setCmd(this, this.form)"></td>
+    <td><input style="background:red;" name="removeBtn" type="Submit" value="Remove User" onclick="setCmd(this, this.form)"></td>
+    <td><input name="lookupBtn" type="Submit" value="Lookup User" onclick="setCmd(this, this.form)">
   </tr>
-  <input type ="hidden" id="cmdID" value="">
+  <input type ="hidden" name="cmdID" id="cmdID" value="">
 </form>
 
 </body>

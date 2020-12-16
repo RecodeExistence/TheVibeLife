@@ -1,7 +1,8 @@
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="65001"%>
 
 <%
-Dim bLoggedIn, user  
+Dim bLoggedIn, user, cmdID
+cmdID = Request.Form("cmdID")
 user = Session("userName")
 If NOT Session("loggedIn") = true Then 
     Session.Contents.RemoveAll()
