@@ -1,0 +1,29 @@
+html, body {
+    height: 100%; 
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+    background: #e2f3f5; 
+}
+
+.registerFormContent {
+    border: 1px solid black; 
+    background: black; 
+}
+
+.registerFormContent form {
+    margin-left: 50%; 
+    margin-right: 50%; 
+}
+
+.registerFormContent table {
+    height: 500px; 
+    width: 500px; 
+}
+
+.registerFormContent table input {
+    height: 30px; 
+    width: 400px;
+     
+    background-color: grey; 
+}
