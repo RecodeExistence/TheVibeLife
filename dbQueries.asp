@@ -85,7 +85,7 @@ If removeBtn <> "" Then
     objConn.Close
     Set objConn = Nothing
 End If 
-End Function
+End Sub
 
 Function lookupUser()
 If lookupBtn <> "" Then 
