@@ -1,4 +1,49 @@
 <%@Language="VBSCRIPT" CODEPAGE="65001"%>
+<%
+   Dim strUserName, strEmailAddress, strPassword1, strPassword2, arrEnteredData(5), bSubmitButtonClicked
+   Dim iCommandID
+   Dim strUrl
+ 
+
+    If Request.Form("cmd").Count <> 0 AND btnSubmitClicked = 1 Then 
+        iCommandID = CInt(1)
+    Else
+        iCommandID = CInt(0)
+    End If 
+
+    If CInt(Request.Form("btnSubmit").Count) <> 1 Then 
+        bSubmitButtonClicked = 0
+    Else 
+        bSubmitButtonClicked = 1
+        strUserName = CStr(Request.Form("username")) 
+        strEmailAddress = CStr(Request.Form("emailAddress"))
+        strPassword1 = CStr(Request.form("password1"))
+        strPassword1 = CStr(Request.form("password2"))
+        
+    End If
+
+    If bSubmitButtonClicked Then 
+            arrEnteredData(1) =  CStr(strUserName)  
+            arrEnteredData(2) = Cstr(strEmailAddress)
+            arrEnteredData(3) = CStr(strPassword1) 
+            arrEnteredData(4) = CStr(strPassword2)
+            arrEnteredData(5) = CInt(bSubmitButtonClicked)
+        iDataArrayLength = UBound(arrDataArray)
+    End If 
+
+
+
+    Function passXHR(url) 
+        Dim xhr
+        xhr = new XMLHTTPRequest()
+        xhr.Open("POST", "processDBPost.asp")
+        xhr
+    End Function
+        
+    End Function
+    End If    
+
+%> 
 
 <html> 
 <head> 
@@ -9,8 +54,7 @@
             return false; 
         }
 
-
-        function confirmThis(e) {
+        function confirmThis(e) { 
             let bMissingFields = false; 
             let bHasErrors = false;
             let strErrorString = ""; 
@@ -60,14 +104,8 @@
             if(bHasErrors) {
                 addError(strErrorString, arrErrorElements);
                 return false;
-            } else {
-                alert(`No problems.`)
-                return true;
-            }
+            } 
     }
-            
-    
-    
     </script>
 </head>
 
@@ -83,4 +121,8 @@
     </table>
     </form>
 </body>
-</html> 
+</html>
+
+<%
+
+Sub%>
