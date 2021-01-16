@@ -72,12 +72,6 @@ If addBtn <> "" Then ' new logic here to ensure that the button has actually bee
   End If ' end of new logic encapsulation.  
 End Sub
 
-'Sub editUser
-  'TODO: Create data to update current user record by values from the form. 
-  ' Set objConn = Server.CreateObject("ADODB.Connection")
- ' 'strSql = "UPDATE dbo.userLogins WHERE userName =" & "'" & username & "'" & " AND passW =" & "'" & password & "'" & _
-           ' '"SET userName = "
-' End Sub 
 
 Sub deleteUser
 If removeBtn <> "" Then  
