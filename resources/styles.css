@@ -1,20 +1,45 @@
+@font-face {
+    font-family: LED;
+    src: url("./TheLedDisplaySt.ttf") format("truetype");
+}
+@font-face {
+    font-family: UberBlock; 
+    src: url("./Cataclysmo.otf") format("opentype"); 
+    font-weight:100; 
+}
+
 html, body {
     color: white; 
     height: 100%; 
     width: 100%; 
     margin: 0; 
     padding: 0; 
-
-    background: purple;
+    font-weight: 100; 
+    background: LINEAR-GRADIENT(TO RIGHT TOP, #C206DB, #15F4EE); 
+    font-weight:50; 
+    color:black;
+    font-family: 'UberBlock';
 }
+
 h1 {
     color: black; 
     font-size: 2em; 
-    font-weight: bold; 
+    font-family: 'LED';
+    font-weight: 100;
 }
+p {
+    font-size: 2em; 
+}
+
 table {
     margin-top: 1em; 
     padding: 1em; 
+    color: white;
+    font-size: 1em; 
+}
+
+label {
+    font-size: 1.5em;
 }
 
 td input {
@@ -23,6 +48,8 @@ td input {
     border: 3px solid black; 
     border-radius: 25px; 
     height: 2em;
+    color: black; 
+    font-size:1em;
 
     -webkit-box-shadow: inset -1px 3px 8px 5px black, 2px 5px 16px 0px #0B325E, inset 0px 1px 15px 6px rgba(0,0,0,0); 
     box-shadow: inset -1px 3px 8px 5px #fff, 2px 5px 16px 0px #0B325E, inset 0px 1px 15px 6px rgba(0,0,0,0);
@@ -36,3 +63,5 @@ input[type="submit"] {
     color: white; 
     background: black;
 }
+
+

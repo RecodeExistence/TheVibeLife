@@ -25,7 +25,7 @@ End If
 <body>
     <div class="loginContainer">
         <table align="center" colspan="8" style="border:1px solid black;">
-        <th><h3>TheVibeLife - Login</h3></th>
+        <th><h1>TheVibeLife - Login</h1></th>
         <tr>
             <td><p>Welcome.  Have you signed up for an account yet? If not, please visit the <a href="<%=redirect("Register.asp")%>">Register Page</a></td>
         </tr>
