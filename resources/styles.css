@@ -1,29 +1,38 @@
 html, body {
+    color: white; 
     height: 100%; 
     width: 100%; 
     margin: 0; 
     padding: 0; 
-    background: #e2f3f5; 
+
+    background: purple;
+}
+h1 {
+    color: black; 
+    font-size: 2em; 
+    font-weight: bold; 
+}
+table {
+    margin-top: 1em; 
+    padding: 1em; 
 }
 
-.registerFormContent {
-    border: 1px solid black; 
-    background: black; 
+td input {
+    width: 100%; 
+    margin: 10px; 
+    border: 3px solid black; 
+    border-radius: 25px; 
+    height: 2em;
+
+    -webkit-box-shadow: inset -1px 3px 8px 5px black, 2px 5px 16px 0px #0B325E, inset 0px 1px 15px 6px rgba(0,0,0,0); 
+    box-shadow: inset -1px 3px 8px 5px #fff, 2px 5px 16px 0px #0B325E, inset 0px 1px 15px 6px rgba(0,0,0,0);
 }
 
-.registerFormContent form {
-    margin-left: 50%; 
-    margin-right: 50%; 
+input[type="submit"] {
+    width: 100%; 
 }
 
-.registerFormContent table {
-    height: 500px; 
-    width: 500px; 
-}
-
-.registerFormContent table input {
-    height: 30px; 
-    width: 400px;
-     
-    background-color: grey; 
+.btnSubmit {
+    color: white; 
+    background: black;
 }
