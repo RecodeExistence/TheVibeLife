@@ -9,7 +9,7 @@ CONST eUserID = 0
 CONST eUserName = 1
 CONST ePassW = 2
 
-connStr = Application("CONNECTION_STRING")
+connStr = Application("DATABASE_CONNECTION_STRING")
 name = Request.Form("username")
 pass = Request.Form("password")
 addBtn = Request.Form("addBtn")  
