@@ -20,8 +20,6 @@ Select Case iCommandID
     LoadPage
 
 End Select 
-Response.write(iCommandID)
-
 
 addUser
 %> 
@@ -89,27 +87,31 @@ function confirmThis(e) {
 <html> 
 <head> 
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="resources/styles.css">
 </head>
 
 <body>
+    <div class="registerContainer">
     <table align="center" colspan="8" style="border:1px solid black;">
-    <th><h1> Welcome to TheVibeLife </h1></th>
-    <tr>
-        <td><p>We're glad to have you here.  If you want to join, please register below.</p></td>
-    </tr>
-    <tr>
-        <td align="center">
-            <form name="registerForm" action="Register.asp" method="POST">
-            <table style="width: 200px; border: 1px solid black;" align="center;"> 
-                <tr><td><label for="username">Username:</label> <input type ="text" name="username" ></td></tr>
-                <tr><td><label for="emailAddress">Email Address: </label><input type ="email" name="emailAddress"></td></tr>
-                <tr><td><label for="password1">Password: </label><input type ="password" name="password1"></td></tr>
-                <tr><td><label for="password2">Confirm Password: </label><input type ="password" name="password2"></td></tr>
-                <tr><td><input type ="Submit" name="btnSubmit" style="width:176px" align="center" onclick="return confirmThis(this.form)" value="Register Now!"></td></tr>
-            </table>
-            </form>
-        </td>
-    </tr>
+        <th><h1> Welcome to TheVibeLife </h1></th>
+        <tr>
+            <td><p>We're glad to have you here.  If you want to join, please register below.</p></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <form name="registerForm" action="Register.asp" method="POST">
+                <table> 
+                    <tr><td><label for="username">Username:</label> <input type ="text" name="username" ></td></tr>
+                    <tr><td><label for="emailAddress">Email Address: </label><input type ="email" name="emailAddress"></td></tr>
+                    <tr><td><label for="password1">Password: </label><input type ="password" name="password1"></td></tr>
+                    <tr><td><label for="password2">Confirm Password: </label><input type ="password" name="password2"></td></tr>
+                    <tr><td><input type ="Submit" name="btnSubmit" class="btnSubmit" onclick="return confirmThis(this.form)" value="Register Now!"></td></tr>
+                </table>
+                </form>
+            </td>
+        </tr>
+        </table> 
+    </div> 
 </body>
 </html>
 
